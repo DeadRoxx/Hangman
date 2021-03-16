@@ -47,17 +47,20 @@ const HiddenWord: React.FC<Props> = ({word, guessedLetters}) => {
 	}, [word, guessedLetters])
 
 	return (
-		<Grid container>
-			{hiddenLetters.map((hiddenLetter, i) => (
-				<Grid>
-					<HiddenLetter
-						key={i}
-						letter={hiddenLetter.letter}
-						guessed={hiddenLetter.guessed}
-					/>
-				</Grid>
-			))}
-		</Grid>
+		<>
+			<p>Hidden Word</p>
+			<Grid container>
+				{hiddenLetters.map((hiddenLetter, i) => (
+					<Grid>
+						<HiddenLetter
+							key={i}
+							letter={hiddenLetter.letter}
+							guessed={hiddenLetter.guessed}
+						/>
+					</Grid>
+				))}
+			</Grid>
+		</>
 	)
 }
 

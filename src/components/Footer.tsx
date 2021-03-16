@@ -1,4 +1,3 @@
-import {Typography} from "@material-ui/core"
 import React from "react"
 
 interface Props {
@@ -7,8 +6,8 @@ interface Props {
 
 const Footer: React.FC<Props> = ({text}) => {
 	return (
-		<footer>
-			<Typography variant="caption">{text}</Typography>
+		<footer className="footer">
+			<p>{text}</p>
 		</footer>
 	)
 }

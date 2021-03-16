@@ -1,4 +1,3 @@
-import {Typography} from "@material-ui/core"
 import React from "react"
 interface Props {
 	text: string
@@ -6,9 +5,9 @@ interface Props {
 
 const Header: React.FC<Props> = ({text}) => {
 	return (
-		<Typography variant="h4" align="center" style={{marginTop: 5}}>
-			{text}
-		</Typography>
+		<header className="header">
+			<h3>{text}</h3>
+		</header>
 	)
 }
 

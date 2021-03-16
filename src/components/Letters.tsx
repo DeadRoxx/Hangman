@@ -12,17 +12,20 @@ interface LetterProps {
 const Letter: React.FC<LetterProps> = ({letter, onSelectLetter}) => {
 	const [alreadySelected, setAlreadySelected] = useState<boolean>(false)
 	return (
-		<Button
-			onClick={(e) => {
-				onSelectLetter(letter)
-				setAlreadySelected(true)
-			}}
-			disabled={alreadySelected}
-			color={"primary"}
-			variant="contained"
-		>
-			<Typography>{letter}</Typography>
-		</Button>
+		<div className="word">
+			<Button
+				onClick={(e) => {
+					onSelectLetter(letter)
+					setAlreadySelected(true)
+				}}
+				disabled={alreadySelected}
+				color={"primary"}
+				variant="contained"
+				size="large"
+			>
+				<Typography>{letter}</Typography>
+			</Button>
+		</div>
 	)
 }
 

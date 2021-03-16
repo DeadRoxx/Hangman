@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react"
 import axios from "axios"
-import {Grid, Typography} from "@material-ui/core"
 import Hangman from "./Hangman"
 import Letters from "./Letters"
 import Timer from "./Timer"
@@ -76,7 +75,7 @@ const Engine: React.FC = () => {
 	}, [seconds, stop])
 
 	useEffect(() => {
-		if (wrongLetters.length >= 5) {
+		if (wrongLetters.length >= 6) {
 			setReason(GameEndedReason.Gameover)
 			setGameEnded(true)
 			stop()
@@ -109,20 +108,20 @@ const Engine: React.FC = () => {
 
 	return (
 		<>
-			<Grid container justify="flex-end">
-				<Timer seconds={seconds} />
-			</Grid>
-
-			<Grid container justify="center">
-				<Grid item xs={6}>
+			<section className="content">
+				<div>
 					<Hangman errors={wrongLetters.length} />
-				</Grid>
-				<Grid item xs={6}>
-					<Typography variant="body1">Wrong Letters</Typography>
+				</div>
+				<div>
+					<div className="timer">
+						<Timer seconds={seconds} />
+					</div>
+					<div className="wrong-letters">
+						<p>Wrong Letters</p>
+					</div>
 					<WrongLetters wrongLetters={wrongLetters} />
-				</Grid>
-			</Grid>
-
+				</div>
+			</section>
 			<HiddenWord word={word} guessedLetters={guessedLetters} />
 			{!gameEnded && (
 				<Letters letters={letters} onSelectLetter={onSelectLetter} />
