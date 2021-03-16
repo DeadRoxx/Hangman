@@ -117,7 +117,7 @@ const Engine: React.FC = () => {
 						<Timer seconds={seconds} />
 					</div>
 					<div className="wrong-letters">
-						<p>Wrong Letters</p>
+						<span>Wrong Letters</span>
 					</div>
 					<WrongLetters wrongLetters={wrongLetters} />
 				</div>
@@ -140,6 +140,7 @@ const Engine: React.FC = () => {
 			/>
 			<GameEndedDialog
 				message={"You won!"}
+				info={`answered: ${word}`}
 				gameEnded={gameEnded && reason === GameEndedReason.Won}
 				onRestart={restartGame}
 			/>

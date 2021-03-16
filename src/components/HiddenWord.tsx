@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react"
 import {Grid, Button} from "@material-ui/core"
+import Tooltip from "./Misc/Tooltip"
 
 interface Props {
 	word: string
@@ -34,10 +35,15 @@ interface Letter {
 
 const HiddenWord: React.FC<Props> = ({word, guessedLetters}) => {
 	const [hiddenLetters, setHiddenLetters] = useState<Letter[]>([])
+	const [tooltip, setTooltip] = useState<string>("")
 
 	useEffect(() => {
 		const wordLetters = word.split("")
-
+		setTooltip(
+			`hint: ${wordLetters.find(
+				(letter) => !guessedLetters.includes(letter)
+			)}` || ""
+		)
 		setHiddenLetters(
 			wordLetters.map((letter) => ({
 				letter,
@@ -48,7 +54,7 @@ const HiddenWord: React.FC<Props> = ({word, guessedLetters}) => {
 
 	return (
 		<>
-			<p>Hidden Word</p>
+			<Tooltip text={"Hidden Word"} tooltipText={tooltip} />
 			<Grid container>
 				{hiddenLetters.map((hiddenLetter, i) => (
 					<Grid>
